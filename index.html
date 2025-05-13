@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bike Station Map Visualizer</title>
+
+    <title>Bike Stations Map</title>
+
+    <link rel="stylesheet" href="global.css" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"/>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="map.js" type="module"></script>
+    <link rel="stylesheet" href="map.css" />
 </head>
 <body>
-    
+    <h1>🚴🏼‍♀️ Bike Stations Visualizer</h1>
+
+    <header style="display: flex; justify-content: space-between; align-items: flex-start; padding: 1em;">
+        <h3>BlueBike Traffic</h3>
+        <div style="
+            position: absolute;
+            top: 60px;
+            right: 30px;
+            width: 350px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            z-index: 999;
+        ">
+            <label style="display: block; font-weight: bold; margin-bottom: 0.5em;">Filter by time:</label>
+            <input id="time-slider" type="range" min="-1" max="1440" value="-1"
+                style="width: 100%;" />
+            <time id="selected-time" style="display: block; margin-top: 0.5em;"></time>
+            <em id="any-time" style="display: block; color: #888; font-style: italic;">(any time)</em>
+        </div>
+    </header>
+
+    <div id="map">
+        <svg></svg>
+    </div>
+
+    <div class="legend">
+        <div style="--departure-ratio: 1; text-align: left;">More departures</div>
+        <div style="--departure-ratio: 0.5; text-align: center;">Balanced</div>
+        <div style="--departure-ratio: 0; text-align: right;">More arrivals</div>
+    </div>
+
 </body>
 </html>
